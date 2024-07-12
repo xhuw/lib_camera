@@ -74,10 +74,14 @@ void camera_isp_coordinates_print(image_cfg_t* image_cfg);
  * @param c_ctrl channel to receive control messages from or to mipi
  * @param c_cam  channel array between user and isp
  */
-void camera_isp_thread(
+// void camera_isp_thread(
+//   streaming_chanend_t c_pkt,
+//   streaming_chanend_t c_ctrl,
+//   chanend_t c_cam[N_CH_USER_ISP]);
+
+void isp_imx219_thread(
   streaming_chanend_t c_pkt,
   streaming_chanend_t c_ctrl,
-  chanend_t c_cam[N_CH_USER_ISP]);
-
+  chanend_t c_cam[N_CH_USER_ISP]); 
 
 C_API_END

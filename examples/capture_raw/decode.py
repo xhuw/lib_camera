@@ -6,7 +6,7 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image  # just to avoid color BGR issues when writting
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import sys
 from pathlib import Path
 

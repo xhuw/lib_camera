@@ -18,7 +18,8 @@
 #include "camera_isp.h"
 
 DECLARE_JOB(camera_mipi_rx, (in_buffered_port_32_t, port_t, streaming_chanend_t, streaming_chanend_t));
-DECLARE_JOB(camera_isp_thread, (streaming_chanend_t, streaming_chanend_t, chanend_t*));
+DECLARE_JOB(isp_imx219_thread, (streaming_chanend_t, streaming_chanend_t, chanend_t*));
+
 
 extern void camera_mipi_rx(
     in_buffered_port_32_t p_mipi_rxd,
@@ -45,7 +46,7 @@ void camera_main(chanend_t c_cam[N_CH_USER_ISP]){
     // Parallel Jobs
     PAR_JOBS(
         PJOB(camera_mipi_rx, (ctx.p_mipi_rxd, ctx.p_mipi_rxa, c_pkt.end_a, c_ctrl.end_a)),
-        PJOB(camera_isp_thread,(c_pkt.end_b, c_ctrl.end_b, c_cam))
+        PJOB(isp_imx219_thread,(c_pkt.end_b, c_ctrl.end_b, c_cam))
     );
 
     s_chan_free(c_pkt);
